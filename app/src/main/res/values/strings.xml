@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">TestInternetSpeed</string>
+    <string name="test">Тест</string>
+    <string name="battery">Экономия батареи</string>
+</resources>
