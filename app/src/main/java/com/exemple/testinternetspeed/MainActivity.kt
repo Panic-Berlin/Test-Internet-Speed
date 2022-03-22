@@ -1,13 +1,14 @@
 package com.exemple.testinternetspeed
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.view.WindowManager
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.exemple.testinternetspeed.databinding.ActivityMainBinding
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import fr.bmartel.speedtest.SpeedTestReport
 import fr.bmartel.speedtest.SpeedTestSocket
@@ -56,7 +57,10 @@ class MainActivity : AppCompatActivity() {
                     override fun onError(speedTestError: SpeedTestError, errorMessage: String) {
                         // called when a download/upload error occur
                         runOnUiThread {
-                            speed.text = speedTestError.name
+                            val snackbar =
+                                Snackbar.make(viewBinding.parent, getString(R.string.connection_error), 3000)
+                            snackbar.anchorView = null
+                            snackbar.show()
                         }
                     }
 
